@@ -78,7 +78,7 @@ function App() {
     const [player, setPlayer] = useState("x");
     const [gameWon, setGameWon] = useState(false);
 
-    const handleClickTile = (e: any, positionX: number, positionY: number) => {
+    const handleClickTile = (positionX: number, positionY: number) => {
         if (board[positionX][positionY] || gameWon) return;
         board[positionX][positionY] = player;
         setBoard(board);
@@ -136,12 +136,12 @@ function App() {
                                     className="d-flex justify-content-center align-items-center"
                                     md={size}
                                 >
-                                    {row.map((col, j) => {
+                                    {row.map((_col, j) => {
                                         return (
                                             <Col
                                                 key={`col${j}}`}
-                                                onClick={e => {
-                                                    handleClickTile(e, i, j);
+                                                onClick={() => {
+                                                    handleClickTile(i, j);
                                                 }}
                                                 className="border border-light text-white fs-4 d-flex justify-content-center align-items-center"
                                                 style={{
